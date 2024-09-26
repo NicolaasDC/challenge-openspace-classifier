@@ -18,26 +18,26 @@ class Seat:
     remove_occupant():
         Remove someone from the seat and return their name
     """
-    def __init__(self, free=True, occupant=""):
+    def __init__(self):
         """
                 Constructs all the necessary attributes for the seat object.
 
         Parameters
         ----------
             free: bool
-                Is the seat free or not
+                Is the seat free or not (default is Free)
             occupant : str
-                Name of the person occupying the seat
+                Name of the person occupying the seat (default is "")
         """
-        self.free = free
-        self.occupant = occupant
+        self.free = True
+        self.occupant = ""
 
     def __repr__(self):
         """
         Prints if the seat is free or occupied by a person
         """
         if self.free == True:
-            return f"The seat is free"
+            return f"Free seat"
         if self.free == False:
             return f"{self.occupant}"
 
@@ -69,7 +69,7 @@ class Table():
     Attributes
     ----------
     capacity: int
-        What is the capacity of the table
+        How many places are on the table
     seats: list
         list of seats (size = capacity)
 
@@ -77,38 +77,41 @@ class Table():
     -------
 
     """
-    def __init__(self, capacity=0):
+    def __init__(self, capacity):
         self.capacity = capacity
         self.seats = []
-            
+        for n in range(capacity):
+            seat = Seat()
+            self.seats.append(seat)
+
     def __repr__(self):
-        if len(self.seats) == 0:
-            return f"No one is at the table"
-        if len(self.seats) > 0:
-            return(str(self.seats))
+        """
+        Prints the seats on the table
+        """
+        return f"{self.seats}"
+    
     def has_free_spot(self):
-        if len(self.seats) < self.capacity:
-            return True
-        else:
-            return False
-        
+        free_spot = False
+        for n in self.seats:
+            if n.free == True:
+                free_spot = True
+        return free_spot
+    
     def assign_seat(self, name):
-        seat = Seat(False, name)
-        self.seats.append(seat)
+        for seat in self.seats:
+            if seat.free == True:
+                seat.set_occupant(name)
+                break
 
     def left_capacity(self):
-        print(self.capacity)
-
-seat_1 = Seat()
-seat_1.set_occupant('Nicolaas')
-print(seat_1)
-table_1 = Table(4)
-table_1.assign_seat(seat_1)
-print(table_1)
-
-            
+        left_capacity = 0
+        for seat in self.seats:
+            if seat.free == True:
+                left_capacity += 1
+        return left_capacity
     
 
 
-             
+
+
 
