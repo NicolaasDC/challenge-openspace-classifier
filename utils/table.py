@@ -11,7 +11,7 @@ class Seat:
 
     Methods
     -------
-    __str__:
+    __repr__():
         Prints if the seat is free of occupîed by someone
     set_occupant(name):
         Assign the seat to someone if it's free
@@ -75,9 +75,25 @@ class Table():
 
     Methods
     -------
+    __repr__():
+        Prints a list of seats on the table
+    has_free_spot():
+        Retruns True if a spot is free on the table and False is all spots are taken
+    assign_seat(name):
+        Remove someone from the seat and return their name
 
     """
     def __init__(self, capacity):
+        """
+        constructs all the necessary attributes for the table object.
+
+        Parameters
+        ----------
+            capacity: int
+                How many seats are on the table.
+            seats: list of seat objects
+                As many empty seats are created as the capacity
+        """
         self.capacity = capacity
         self.seats = []
         for n in range(capacity):
@@ -91,6 +107,9 @@ class Table():
         return f"{self.seats}"
     
     def has_free_spot(self):
+        """
+        Returns True if the seat is free and False if the seat is occupied
+        """
         free_spot = False
         for n in self.seats:
             if n.free == True:
@@ -98,12 +117,18 @@ class Table():
         return free_spot
     
     def assign_seat(self, name):
+        """
+        Assign a name to a seat if the seat is free.
+        """
         for seat in self.seats:
             if seat.free == True:
                 seat.set_occupant(name)
                 break
 
     def left_capacity(self):
+        """
+        Shows how many free seats are left on the table
+        """
         left_capacity = 0
         for seat in self.seats:
             if seat.free == True:
