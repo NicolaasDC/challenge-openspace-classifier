@@ -1,12 +1,17 @@
 from table import Table, Seat
 import random
+import xlsxwriter
+
 
 class Openspace():
     """
     """
-    def __init__(self, tables=[]):
-        self.tables = tables
-        self.number_of_tables = len(self.tables)
+    def __init__(self, number_of_tables=6, seats_on_table=4):
+        self.number_of_tables = number_of_tables
+        self.tables = []
+        for table in range(number_of_tables):
+            self.tables.append(Table(seats_on_table))
+
 
     def __repr__(self):
         return f"{self.tables}"
@@ -19,35 +24,32 @@ class Openspace():
             seats.append(seat)
         random.shuffle(seats)
         for table in self.tables:
-            while table.has_free_spot() == True:
-                table.assign_seat(seats[-1])
-                seats.remove[-1]
-
-
+            for person in seats[0:4]:
+                table.assign_seat(person)
+            del seats[0:4]
     
     def display(self):
-        for table in self.tables:
-            print(table)
+        for count, table in enumerate(self.tables, 1):
+            print(f"Table {count}: {table}")
+            
 
     def store(self, filename):
-        pass
+        workbook = xlsxwriter.Workbook(f'{filename}.xlsx')
+        worksheet = workbook.add_worksheet()
+        
+        row = 0
+        
+        for table in self.tables:
+            column = 0
+            worksheet.write(row, column,f"Table {row+1}")
+            seats = table.seats
+            for item in seats:
+                column += 1
+                worksheet.write(row, column, str(item))
+            row += 1
+
+        workbook.close()
 
 
-table_1 = Table(4)
-table_2 = Table(4)
-table_3 = Table(4)
-table_4 = Table(4)
-room = Openspace([table_1, table_2, table_3, table_4])
 
-list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-seats = []
-for name in list:
-    seat = Seat()
-    seat.set_occupant(name)
-    seats.append(seat)
-    random.shuffle(seats)
-print(seats)
-print(type(seats[0]))
 
-room.organize(seats)
-room.display()
