@@ -1,12 +1,5 @@
-import sys
-import os
 import csv
-
-sys.path.append(os.path.abspath("openspace-organizer/utils"))
-
-from table import *
-from openspace import *
-
+from utils.openspace import Openspace
 
 people = []
 with open('new_colleagues.csv', mode ='r')as file:
