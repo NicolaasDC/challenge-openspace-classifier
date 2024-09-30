@@ -28,6 +28,7 @@ input_filepath = "new_colleagues.csv"
 output_filename = "table_setup.xslx"
 
 #Reads the lines in a csv file and convert them to a list
+
 people = []
 with open('new_colleagues.csv', mode ='r')as file:
     csvFile = csv.reader(file)
@@ -35,15 +36,19 @@ with open('new_colleagues.csv', mode ='r')as file:
         people.append(line[0])
 
 #Create an Openspace object
+
 room = Openspace()
 
 #Put the colleagues on random tables 
+
 room.organize(people)
 
 #Save the table setup 
+
 room.store('table_setup')
 
 #Display the table setup on the screen
+
 room.display()
 
 # Timeline
