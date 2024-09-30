@@ -3,7 +3,7 @@ Our company moved to a new office space. This is a program that runs everyday to
 
 # Repo structure
 .
-├── src/
+├── utils/
 
 │   ├── openspace.py
 
