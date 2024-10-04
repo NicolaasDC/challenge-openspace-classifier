@@ -2,24 +2,20 @@
 Our company moved to a new office space. This is a program that runs everyday to re-assign everybody to a new seat.
 
 # Repo structure
+
+```
 .
-├── utils/
-
+├── src/
 │   ├── openspace.py
-
 │   ├── table.py
-
 │   └── utils.py
-
 ├── .gitignore
-
 ├── main.py
-
 ├── new_colleagues.csv
-
-├── table_setup.xlsx
-
+├── output.csv
 └── README.md
+```
+
 
 # Usage
 Clone the repository to your local machine.
@@ -30,7 +26,9 @@ Clone the repository to your local machine.
 python main.py
 ```
 
-The script reads your input file, and organizes your colleagues to random seat assignments. The resulting seating plan is displayed in your console and also saved to an "table_setup.xslx" file in your root directory.
+The script reads your input file, and organizes your colleagues to random seat assignments. The resulting seating plan is displayed in your console and also saved to an 
+```
+"table_setup.xslx" file in your root directory.
 
 input_filepath = "new_colleagues.csv"
 output_filename = "table_setup.xslx"
@@ -58,6 +56,8 @@ room.store('table_setup')
 #Display the table setup on the screen
 
 room.display()
+```
+
 
 # Timeline
 This project took two days for completion.
