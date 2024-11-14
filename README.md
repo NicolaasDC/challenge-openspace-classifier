@@ -1,7 +1,7 @@
 # challenge-openspace-classifier
 Our company moved to a new office space. This is a program that runs everyday to re-assign everybody to a new seat.
 
-# Repo structure
+## 📦 Repo structure
 
 ```
 .
@@ -17,7 +17,7 @@ Our company moved to a new office space. This is a program that runs everyday to
 ```
 
 
-# Usage
+## 🤖 Usage
 Clone the repository to your local machine.
 
 2 .To run the script, you can execute the main.py file from your command line:
@@ -59,10 +59,10 @@ room.display()
 ```
 
 
-# Timeline
+## ⏱️ Timeline
 This project took two days for completion.
 
-# Personal Situation
+## 👱 Personal Situation
 This project was done as part of the AI Boocamp at BeCode.org.
 
 Connect with me on LinkedIn.
